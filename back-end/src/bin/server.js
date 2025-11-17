@@ -7,6 +7,31 @@
 import app from '../app.js'
 import chalk from 'chalk'
 import { createServer } from 'http'
+import fs from 'fs'
+import path from 'path'
+
+// Carrega variáveis do arquivo .env (simples, sem dependência externa)
+try {
+  const envPath = path.resolve(process.cwd(), '.env')
+  if (fs.existsSync(envPath)) {
+    const content = fs.readFileSync(envPath, 'utf8')
+    content.split(/\r?\n/).forEach(line => {
+      const match = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)\s*$/)
+      if (match) {
+        const key = match[1]
+        let val = match[2] || ''
+        // remove surrounding quotes
+        if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+          val = val.substring(1, val.length - 1)
+        }
+        if (!process.env[key]) process.env[key] = val
+      }
+    })
+  }
+} catch (e) {
+  // não bloqueante: se algo falhar, continuará e o Prisma logará erro
+  console.error('Erro ao carregar .env:', e)
+}
 
 /**
  * Get port from environment and store in Express.

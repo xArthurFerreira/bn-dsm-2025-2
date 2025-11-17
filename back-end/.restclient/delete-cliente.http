@@ -1,0 +1,4 @@
+### DELETE - Excluir Cliente (Status 204)
+# Substitua {CLIENTE_ID} pelo id de um cliente que deseja deletar
+# Exemplo de ID: 691a53a68e60f0d9188b3bc5 (Maria Silva)
+DELETE http://localhost:8080/clientes/691a53a68e60f0d9188b3bc5

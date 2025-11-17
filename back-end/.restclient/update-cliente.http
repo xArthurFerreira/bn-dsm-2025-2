@@ -1,0 +1,11 @@
+### PUT - Atualizar Cliente (Status 200)
+# Substitua {CLIENTE_ID} pelo id de um cliente já cadastrado
+# Exemplo de ID: 691a53a68e60f0d9188b3bc4 (Arthur)
+PUT http://localhost:8080/clientes/691a53a68e60f0d9188b3bc4
+Content-Type: application/json
+
+{
+  "nome": "Arthur Rodrigues Ferreira - Atualizado",
+  "email": "arthur.ferreira.atualizado@example.com",
+  "celular": "11999999888"
+}

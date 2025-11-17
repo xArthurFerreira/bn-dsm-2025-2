@@ -1,20 +1,12 @@
-import { PrismaClient } from '../generated/prisma/default.js'
+import { PrismaClient } from "@prisma/client";
 
-// Cria o cliente Prisma com opção de exibir no terminal
-// todas as consultas enviadas ao banco de dados
-const prisma = new PrismaClient({
-  log: [{
-    emit: 'event',
-    level: 'query'
-  }]
-})
+// Cria o cliente Prisma
+const prisma = new PrismaClient()
 
-// Exibe no terminal todas as instruções de consulta
-// enviadas ao servidor MongoDB
-prisma.$on('query', event => {
-  console.log('-'.repeat(80))
-  console.log(event.query)
-  if(event.params) console.log('PARAMS:', event.params)
-})
+// Tenta conectar o cliente Prisma e loga sucesso/falha para facilitar diagnóstico
+prisma
+  .$connect()
+  .then(() => console.log('Prisma: conexão com o banco estabelecida.'))
+  .catch(err => console.error('Prisma: erro ao conectar ao banco:', err))
 
 export default prisma

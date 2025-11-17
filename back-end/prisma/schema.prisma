@@ -6,31 +6,30 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 // Nomes de model no Prisma devem estar
 // no singular e iniciar com LetraMaiúscula
 model Categoria {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  id          String    @id @default(cuid())
   descricao   String
   produtos    Produto[]
 }
 
 model Cliente {
-  id                String    @id @default(auto()) @map("_id") @db.ObjectId
+  id                String    @id @default(cuid())
   nome              String
-  cpf               String    @unique     // Não pode se repetir na coleção
-  data_nascimento   DateTime? // opcional
+  cpf               String    @unique
+  data_nascimento   DateTime?
   email             String    @unique
   logradouro        String    
   num_imovel        String
-  complemento       String?   // opcional
+  complemento       String?
   bairro            String
   municipio         String
   uf                String
@@ -40,7 +39,7 @@ model Cliente {
 }
 
 model Fornecedor {
-  id                String        @id @default(auto()) @map("_id") @db.ObjectId
+  id                String        @id @default(cuid())
   razao_social      String
   nome_fantasia     String?
   cnpj              String        @unique
@@ -53,8 +52,8 @@ model Fornecedor {
   uf                String
   cep               String
   celular           String
-  produtos          Produto[]     @relation(fields: [produto_ids], references: [id])
-  produto_ids       String[]      @db.ObjectId
+  produtos          Produto[]
+  produto_ids       String[]
 }
 
 model Pedido {

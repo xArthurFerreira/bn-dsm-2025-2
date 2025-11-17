@@ -1,0 +1,41 @@
+{
+  "info": {
+    "name": "Backend API - Clientes",
+    "description": "Testes de API para modelo Cliente",
+    "version": "1.0.0"
+  },
+  "requests": [
+    {
+      "name": "Criar Cliente - Arthur Rodrigues Ferreira",
+      "method": "POST",
+      "url": "http://localhost:8080/clientes",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "mode": "raw",
+        "raw": "{\"nome\": \"Arthur Rodrigues Ferreira\", \"cpf\": \"12345678901\", \"data_nascimento\": \"2005-01-14\", \"email\": \"arthur@example.com\", \"logradouro\": \"Rua das Flores\", \"num_imovel\": \"123\", \"complemento\": \"Apartamento 45\", \"bairro\": \"Centro\", \"municipio\": \"São Paulo\", \"uf\": \"SP\", \"cep\": \"01234-567\", \"celular\": \"11999999999\"}"
+      }
+    },
+    {
+      "name": "Criar Cliente 2 - João Silva",
+      "method": "POST",
+      "url": "http://localhost:8080/clientes",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "mode": "raw",
+        "raw": "{\"nome\": \"João Silva\", \"cpf\": \"98765432100\", \"data_nascimento\": \"2000-01-10\", \"email\": \"joao@example.com\", \"logradouro\": \"Avenida Principal\", \"num_imovel\": \"456\", \"complemento\": \"Sala 10\", \"bairro\": \"Vila Nova\", \"municipio\": \"Rio de Janeiro\", \"uf\": \"RJ\", \"cep\": \"20000-000\", \"celular\": \"21988888888\"}"
+      }
+    },
+    {
+      "name": "Listar todos os clientes",
+      "method": "GET",
+      "url": "http://localhost:8080/clientes",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  ]
+}

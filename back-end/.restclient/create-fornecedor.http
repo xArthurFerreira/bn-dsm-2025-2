@@ -1,0 +1,20 @@
+### Criar Fornecedor - Teste
+POST http://localhost:8080/fornecedores
+Content-Type: application/json
+
+{
+  "razao_social": "Fornecedor Teste Ltda",
+  "nome_fantasia": "Fornecedor Teste",
+  "cnpj": "12345678000199",
+  "email": "fornecedor.teste@example.com",
+  "logradouro": "Rua do Fornecedor",
+  "num_casa": "100",
+  "complemento": "Sala 10",
+  "bairro": "Centro",
+  "municipio": "São Paulo",
+  "uf": "SP",
+  "cep": "01001-000",
+  "celular": "11977776666"
+}
+
+# Após criar, você pode usar GET /fornecedores para verificar.

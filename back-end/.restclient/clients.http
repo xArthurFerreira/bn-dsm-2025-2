@@ -1,0 +1,67 @@
+### 1) Criar Cliente - Arthur Rodrigues Ferreira
+POST http://localhost:8080/clientes
+Content-Type: application/json
+
+{
+  "nome": "Arthur Rodrigues Ferreira",
+  "cpf": "11122233344",
+  "email": "arthur.ferreira@example.com",
+  "logradouro": "Rua das Flores",
+  "num_imovel": "123",
+  "complemento": "Apartamento 45",
+  "bairro": "Centro",
+  "municipio": "São Paulo",
+  "uf": "SP",
+  "cep": "01234-567",
+  "celular": "11999999999"
+}
+
+### 2) Criar Cliente - Maria Silva
+POST http://localhost:8080/clientes
+Content-Type: application/json
+
+{
+  "nome": "Maria Silva",
+  "cpf": "55566677788",
+  "email": "maria.silva@example.com",
+  "logradouro": "Avenida Brasil",
+  "num_imovel": "45",
+  "complemento": "Casa",
+  "bairro": "Jardim",
+  "municipio": "Campinas",
+  "uf": "SP",
+  "cep": "13000-000",
+  "celular": "19988877766"
+}
+
+### 3) Listar todos os clientes (sem incluir pedidos)
+GET http://localhost:8080/clientes
+
+### 4) Criar Pedido para um cliente (substitua {CLIENTE_ID} pelo id retornado ao criar o cliente)
+# Exemplo de body para criar pedido simples (sem itens):
+POST http://localhost:8080/pedidos
+Content-Type: application/json
+
+{
+  "num_pedido": 1001,
+  "cliente_id": "{CLIENTE_ID}"
+}
+
+### 5) Criar outro pedido para o segundo cliente (substitua {CLIENTE_ID_2})
+POST http://localhost:8080/pedidos
+Content-Type: application/json
+
+{
+  "num_pedido": 1002,
+  "cliente_id": "{CLIENTE_ID_2}"
+}
+
+### 6) Listar clientes incluindo pedidos (retorna clientes com campo `pedidos`)
+GET http://localhost:8080/clientes?include=pedidos
+
+# Instruções rápidas:
+# 1) Abra este arquivo em VS Code (na pasta `.restclient`).
+# 2) Envie as requisições 1 e 2 (Create Client). Copie os `id` (ObjectId) retornados.
+# 3) Substitua `{CLIENTE_ID}` e `{CLIENTE_ID_2}` nos requests 4 e 5 pelos ids copiados e execute-os.
+# 4) Execute o request 6 (GET /clientes?include=pedidos). Você verá os dois clientes com o array `pedidos` associados (HTTP 200).
+# 5) Tire o print mostrando o status 200 e os objetos retornados.

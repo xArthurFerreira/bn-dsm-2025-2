@@ -1,0 +1,3 @@
+### GET Clientes com Pedidos - Status 200
+GET http://localhost:8080/clientes?include=pedidos
+Content-Type: application/json

@@ -1,0 +1,40 @@
+### Criar Cliente - Arthur Rodrigues Ferreira
+POST http://localhost:8080/clientes
+Content-Type: application/json
+
+{
+  "nome": "Arthur Rodrigues Ferreira",
+  "cpf": "12345678",
+  "data_nascimento": "14-01-2005",
+  "email": "arthur@example.com",
+  "logradouro": "Rua das Flores",
+  "num_imovel": "123",
+  "complemento": "Apartamento 45",
+  "bairro": "Centro",
+  "municipio": "São Paulo",
+  "uf": "SP",
+  "cep": "01234-567",
+  "celular": "11999999999"
+}
+
+### Criar Cliente 2
+POST http://localhost:8080/clientes
+Content-Type: application/json
+
+{
+  "nome": "João Silva",
+  "cpf": "98765432100",
+  "data_nascimento": "2000-01-10",
+  "email": "joao@example.com",
+  "logradouro": "Avenida Principal",
+  "num_imovel": "456",
+  "complemento": "Sala 10",
+  "bairro": "Vila Nova",
+  "municipio": "Rio de Janeiro",
+  "uf": "RJ",
+  "cep": "20000-000",
+  "celular": "21988888888"
+}
+
+### Listar clientes com pedidos (STATUS 200)
+GET http://localhost:8080/clientes?include=pedidos
